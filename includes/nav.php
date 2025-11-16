@@ -24,18 +24,6 @@ $current_page = $current_page ?? basename($_SERVER['PHP_SELF'], '.php');
             <a href="contact.php" class="nav-link<?php echo $current_page === 'contact' ? ' active' : ''; ?>">CONTACT</a>
         </div>
         
-        <div class="nav-actions">
-            <?php if (isAdmin()): ?>
-                <a href="dashboard.php" class="admin-btn">
-                    <i class="fas fa-cog"></i> ADMIN
-                </a>
-            <?php else: ?>
-                <a href="login.php" class="login-btn">
-                    <i class="fas fa-sign-in-alt"></i> LOGIN
-                </a>
-            <?php endif; ?>
-        </div>
-        
         <!-- Menu mobile -->
         <div class="mobile-menu-toggle">
             <span></span>

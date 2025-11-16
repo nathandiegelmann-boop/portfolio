@@ -135,25 +135,7 @@ body {
   left: 100%;
 }
 
-.admin-btn,
-.login-btn {
-  background: var(--code-bg);
-  border: 1px solid var(--terminal-green);
-  color: var(--terminal-green);
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
-  text-decoration: none;
-  font-weight: 600;
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  transition: var(--transition);
-}
-
-.admin-btn:hover,
-.login-btn:hover {
-  background: rgba(0, 255, 65, 0.1);
-  box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
-}
+/* Styles admin/login supprimés - plus nécessaires pour portfolio public */
 
 /* Hero Section */
 .hero {

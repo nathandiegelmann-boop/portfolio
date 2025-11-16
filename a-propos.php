@@ -730,17 +730,7 @@ $study_years = date('Y') - 2021; // Depuis le collège
                 <a href="contact.php" class="nav-link">CONTACT</a>
             </div>
             
-            <div class="nav-actions">
-                <?php if (isAdmin()): ?>
-                    <a href="dashboard.php" class="admin-btn">
-                        <i class="fas fa-cog"></i> ADMIN
-                    </a>
-                <?php else: ?>
-                    <a href="login.php" class="login-btn">
-                        <i class="fas fa-sign-in-alt"></i> LOGIN
-                    </a>
-                <?php endif; ?>
-            </div>
+
         </div>
     </nav>
 
