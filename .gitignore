@@ -1,0 +1,42 @@
+# Fichiers de configuration sensibles
+config/database.php
+includes/config.php
+
+# Logs
+logs/
+*.log
+
+# Fichiers temporaires
+tmp/
+temp/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dépendances (si utilisées)
+vendor/
+node_modules/
+
+# Fichiers de cache
+cache/
+*.cache
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+*~
+
+# Variables d'environnement
+.env
+.env.local
+
+# Fichiers de test
+test_*.php
+debug_*.php
