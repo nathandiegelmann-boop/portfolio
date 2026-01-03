@@ -1,6 +1,6 @@
 /* CSS spécifique à la page Contact */
 .contact-hero {
-    background: linear-gradient(135deg, var(--darker-bg), var(--dark-bg));
+    background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
     padding: 8rem 2rem 4rem;
     text-align: center;
     position: relative;
@@ -18,15 +18,15 @@
         45deg,
         transparent,
         transparent 2px,
-        rgba(0, 255, 65, 0.02) 2px,
-        rgba(0, 255, 65, 0.02) 4px
+        rgba(245, 158, 11, 0.02) 2px,
+        rgba(245, 158, 11, 0.02) 4px
     );
     pointer-events: none;
 }
 
 .contact-main {
     padding: 4rem 2rem;
-    background: var(--dark-bg);
+    background: var(--bg-secondary);
 }
 
 .contact-container {
@@ -39,8 +39,8 @@
 }
 
 .contact-info {
-    background: var(--code-bg);
-    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    border: 1px solid var(--bg-tertiary);
     border-radius: var(--border-radius);
     padding: 3rem;
     position: sticky;
@@ -48,8 +48,8 @@
 }
 
 .contact-form-container {
-    background: var(--code-bg);
-    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    border: 1px solid var(--bg-tertiary);
     border-radius: var(--border-radius);
     padding: 3rem;
 }
@@ -60,14 +60,14 @@
     gap: 1rem;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid var(--terminal-green);
+    border-bottom: 2px solid var(--primary-orange);
 }
 
 .section-icon {
     width: 40px;
     height: 40px;
-    background: var(--terminal-green);
-    color: var(--dark-bg);
+    background: var(--primary-orange);
+    color: var(--bg-primary);
     border-radius: var(--border-radius);
     display: flex;
     align-items: center;
@@ -79,7 +79,7 @@
     font-family: var(--font-mono);
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--terminal-green);
+    color: var(--primary-orange);
     margin: 0;
 }
 
@@ -94,8 +94,8 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    background: var(--darker-bg);
-    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    border: 1px solid var(--bg-tertiary);
     border-radius: var(--border-radius);
     transition: var(--transition);
     text-decoration: none;
@@ -103,27 +103,27 @@
 }
 
 .contact-method:hover {
-    border-color: var(--terminal-green);
-    background: rgba(0, 255, 65, 0.1);
+    border-color: var(--primary-orange);
+    background: rgba(245, 158, 11, 0.1);
     transform: translateX(10px);
 }
 
 .method-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, var(--terminal-green), var(--code-blue));
+    background: linear-gradient(135deg, var(--primary-orange), var(--primary-red));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    color: var(--dark-bg);
+    color: var(--bg-primary);
     flex-shrink: 0;
 }
 
 .method-details h4 {
     font-family: var(--font-mono);
-    color: var(--terminal-green);
+    color: var(--primary-orange);
     margin: 0 0 0.5rem 0;
     font-size: 1rem;
 }
@@ -135,8 +135,8 @@
 }
 
 .availability-status {
-    background: rgba(0, 255, 65, 0.1);
-    border: 1px solid var(--terminal-green);
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid var(--primary-orange);
     border-radius: var(--border-radius);
     padding: 1.5rem;
     text-align: center;
@@ -147,7 +147,7 @@
     align-items: center;
     gap: 0.5rem;
     font-family: var(--font-mono);
-    color: var(--terminal-green);
+    color: var(--primary-orange);
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
@@ -155,7 +155,7 @@
 .status-dot {
     width: 8px;
     height: 8px;
-    background: var(--terminal-green);
+    background: var(--primary-orange);
     border-radius: 50%;
     animation: pulse 2s infinite;
 }
@@ -184,8 +184,8 @@
 
 .form-input,
 .form-textarea {
-    background: var(--darker-bg);
-    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    border: 1px solid var(--bg-tertiary);
     border-radius: var(--border-radius);
     padding: 1rem;
     color: var(--text-primary);
@@ -197,8 +197,8 @@
 .form-input:focus,
 .form-textarea:focus {
     outline: none;
-    border-color: var(--terminal-green);
-    box-shadow: 0 0 0 2px rgba(0, 255, 65, 0.2);
+    border-color: var(--primary-orange);
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
 }
 
 .form-textarea {
@@ -209,11 +209,11 @@
 }
 
 .form-submit {
-    background: linear-gradient(135deg, var(--terminal-green), var(--code-blue));
+    background: linear-gradient(135deg, var(--primary-orange), var(--primary-red));
     border: none;
     border-radius: var(--border-radius);
     padding: 1rem 2rem;
-    color: var(--dark-bg);
+    color: white;
     font-family: var(--font-mono);
     font-weight: 700;
     font-size: 1rem;
@@ -225,7 +225,7 @@
 
 .form-submit:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 255, 65, 0.3);
+    box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
 }
 
 .form-submit:active {
@@ -265,8 +265,8 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 0.8rem;
-    background: var(--darker-bg);
-    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    border: 1px solid var(--bg-tertiary);
     border-radius: var(--border-radius);
     color: var(--text-primary);
     text-decoration: none;
@@ -276,21 +276,21 @@
 }
 
 .social-link:hover {
-    border-color: var(--code-blue);
-    background: rgba(97, 218, 251, 0.1);
-    color: var(--code-blue);
+    border-color: var(--primary-orange);
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--primary-orange);
 }
 
 .tech-stack-info {
-    background: rgba(97, 218, 251, 0.05);
-    border-left: 4px solid var(--code-blue);
+    background: rgba(245, 158, 11, 0.05);
+    border-left: 4px solid var(--primary-orange);
     padding: 1.5rem;
     border-radius: var(--border-radius);
     margin-top: 2rem;
 }
 
 .tech-stack-info h4 {
-    color: var(--code-blue);
+    color: var(--primary-orange);
     font-family: var(--font-mono);
     margin-bottom: 1rem;
 }
@@ -302,9 +302,9 @@
 }
 
 .tech-tag {
-    background: var(--code-bg);
-    border: 1px solid var(--code-blue);
-    color: var(--code-blue);
+    background: var(--bg-secondary);
+    border: 1px solid var(--primary-orange);
+    color: var(--primary-orange);
     padding: 0.3rem 0.8rem;
     border-radius: 15px;
     font-family: var(--font-mono);

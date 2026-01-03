@@ -1,0 +1,219 @@
+/* Correctifs Responsive Mobile - Portfolio Nathan Diegelmann */
+
+/* Fix général pour éviter le débordement horizontal */
+* {
+    max-width: 100%;
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Fix pour les images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix pour les conteneurs principaux */
+.container,
+[class*="container-"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Media Queries Mobile */
+@media (max-width: 768px) {
+    /* Espacements généraux */
+    * {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    /* Hero section */
+    .hero {
+        padding: 2rem 0.5rem !important;
+        min-height: 100vh;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        padding: 1rem 0.5rem !important;
+    }
+    
+    /* Titres responsive */
+    h1 {
+        font-size: clamp(1.8rem, 5vw, 3rem) !important;
+        line-height: 1.2;
+        word-break: break-word;
+    }
+    
+    h2 {
+        font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+        line-height: 1.3;
+    }
+    
+    h3 {
+        font-size: clamp(1.2rem, 3vw, 2rem) !important;
+    }
+    
+    /* Grilles responsive */
+    [class*="grid"],
+    [class*="-grid"] {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+    
+    /* Cartes et conteneurs */
+    .card,
+    [class*="card"] {
+        margin: 0.5rem 0;
+        padding: 1rem;
+    }
+    
+    /* Boutons */
+    .btn,
+    button,
+    [class*="btn"] {
+        width: 100%;
+        max-width: 300px;
+        margin: 0.5rem auto;
+    }
+    
+    /* Fix pour les barres de progression */
+    .skill-bar,
+    [class*="bar"] {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Espacements réduits sur petits mobiles */
+    section {
+        padding: 3rem 0.5rem 2rem !important;
+    }
+    
+    .hero {
+        padding: 1.5rem 0.25rem !important;
+    }
+    
+    .hero-content {
+        padding: 0.5rem 0.25rem !important;
+    }
+    
+    /* Titres encore plus petits */
+    h1 {
+        font-size: clamp(1.5rem, 6vw, 2.5rem) !important;
+    }
+    
+    h2 {
+        font-size: clamp(1.3rem, 5vw, 2rem) !important;
+    }
+    
+    /* Textes */
+    p,
+    .text,
+    [class*="text"] {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    /* Cards et spacing */
+    .card,
+    [class*="card"] {
+        padding: 0.75rem;
+    }
+    
+    /* Fix pour les stats */
+    .hero-stats {
+        gap: 0.75rem !important;
+        padding: 0.5rem;
+    }
+    
+    .stat {
+        padding: 0.5rem !important;
+    }
+}
+
+@media (max-width: 360px) {
+    /* Ultra petits écrans */
+    section {
+        padding: 2.5rem 0.25rem 1.5rem !important;
+    }
+    
+    .hero-content {
+        padding: 0.25rem !important;
+    }
+    
+    h1 {
+        font-size: 1.4rem !important;
+    }
+    
+    h2 {
+        font-size: 1.2rem !important;
+    }
+    
+    h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    p {
+        font-size: 0.85rem;
+    }
+    
+    .card,
+    [class*="card"] {
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+    }
+}
+
+/* Fix pour empêcher le zoom sur les inputs mobile */
+@media (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="password"],
+    textarea,
+    select {
+        font-size: 16px !important;
+    }
+}
+
+/* Fix pour les tables responsive */
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* Fix pour les vidéos et iframes */
+.video-container,
+iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix pour les formulaires */
+@media (max-width: 768px) {
+    form {
+        width: 100%;
+    }
+    
+    .form-group,
+    .form-row {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+    
+    input,
+    textarea,
+    select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

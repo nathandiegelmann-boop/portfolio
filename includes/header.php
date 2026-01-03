@@ -12,8 +12,8 @@ if (!defined('PORTFOLIO_INIT')) {
     <title><?php echo isset($page_title) ? $page_title . ' - ' . SITE_NAME : SITE_NAME; ?></title>
     <meta name="description" content="<?php echo isset($page_description) ? $page_description : 'Portfolio de Nathan Diegelmann - Développeur web HTML/CSS/PHP/SQL et powerlifter. Étudiant en Bachelor Développement Web.'; ?>">
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Fonts - Inter pour Dark Mode Élégant -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Tailwind CSS -->
@@ -24,18 +24,18 @@ if (!defined('PORTFOLIO_INIT')) {
             theme: {
                 extend: {
                     colors: {
-                        'terminal-green': '#00ff41',
-                        'code-blue': '#61dafb',
-                        'darker-bg': '#0d1117',
-                        'dark-bg': '#161b22',
-                        'code-bg': '#21262d',
-                        'border-color': '#30363d',
-                        'text-primary': '#f0f6fc',
-                        'text-secondary': '#8b949e'
+                        'primary-orange': '#F59E0B',
+                        'primary-red': '#EF4444',
+                        'bg-primary': '#0F172A',
+                        'bg-secondary': '#1E293B',
+                        'bg-tertiary': '#334155',
+                        'text-primary': '#F1F5F9',
+                        'text-secondary': '#CBD5E1',
+                        'text-muted': '#94A3B8'
                     },
                     fontFamily: {
-                        'mono': ['Fira Code', 'JetBrains Mono', 'monospace'],
-                        'primary': ['system-ui', '-apple-system', 'sans-serif']
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        'mono': ['Fira Code', 'JetBrains Mono', 'monospace']
                     }
                 }
             }
