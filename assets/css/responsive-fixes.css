@@ -3,6 +3,7 @@
 /* Fix général pour éviter le débordement horizontal */
 * {
     max-width: 100%;
+    box-sizing: border-box;
 }
 
 html, body {
@@ -14,13 +15,42 @@ html, body {
 img {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
 /* Fix pour les conteneurs principaux */
 .container,
 [class*="container-"] {
     width: 100%;
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
     box-sizing: border-box;
+}
+
+/* Fix bouton navigation flottant */
+#floatingNavBtn {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+#floatingNavMenu {
+    min-width: 200px !important;
+    max-width: calc(100vw - 40px) !important;
+}
+
+/* Tablettes (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    
+    /* Grilles 2 colonnes pour tablettes */
+    [class*="grid"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem;
+    }
 }
 
 /* Media Queries Mobile */
@@ -33,43 +63,74 @@ img {
     
     /* Hero section */
     .hero {
-        padding: 2rem 0.5rem !important;
-        min-height: 100vh;
+        padding: 3rem 1rem !important;
+        min-height: auto !important;
     }
     
     .hero-content {
         max-width: 100%;
-        padding: 1rem 0.5rem !important;
+        padding: 1.5rem 1rem !important;
+        text-align: center;
+    }
+    
+    .hero-badge {
+        font-size: 0.75rem !important;
+        padding: 0.5rem 1rem !important;
     }
     
     /* Titres responsive */
-    h1 {
-        font-size: clamp(1.8rem, 5vw, 3rem) !important;
-        line-height: 1.2;
+    h1,
+    .hero-title {
+        font-size: clamp(2rem, 7vw, 3.5rem) !important;
+        line-height: 1.2 !important;
         word-break: break-word;
+        margin-bottom: 1rem !important;
     }
     
     h2 {
-        font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
-        line-height: 1.3;
+        font-size: clamp(1.5rem, 5vw, 2.5rem) !important;
+        line-height: 1.3 !important;
+        margin-bottom: 1rem !important;
     }
     
     h3 {
-        font-size: clamp(1.2rem, 3vw, 2rem) !important;
+        font-size: clamp(1.2rem, 4vw, 2rem) !important;
+    }
+    
+    p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    /* Stats hero */
+    .hero-stats {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        width: 100%;
+    }
+    
+    .stat {
+        width: 100% !important;
+        max-width: 300px;
+        margin: 0 auto;
     }
     
     /* Grilles responsive */
     [class*="grid"],
-    [class*="-grid"] {
+    [class*="-grid"],
+    .projects-grid,
+    .skills-grid {
         grid-template-columns: 1fr !important;
-        gap: 1rem;
+        gap: 1.5rem;
     }
     
     /* Cartes et conteneurs */
     .card,
-    [class*="card"] {
-        margin: 0.5rem 0;
-        padding: 1rem;
+    [class*="card"],
+    .project-card,
+    .skill-card {
+        margin: 1rem 0;
+        padding: 1.5rem;
     }
     
     /* Boutons */
@@ -77,8 +138,15 @@ img {
     button,
     [class*="btn"] {
         width: 100%;
-        max-width: 300px;
-        margin: 0.5rem auto;
+        max-width: 100%;
+        margin: 0.75rem 0;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .btn-group {
+        flex-direction: column !important;
+        width: 100%;
     }
     
     /* Fix pour les barres de progression */
@@ -86,53 +154,173 @@ img {
     [class*="bar"] {
         width: 100%;
     }
+    
+    /* Navigation flottante mobile */
+    #floatingNavBtn {
+        top: 15px !important;
+        right: 15px !important;
+        width: 45px !important;
+        height: 45px !important;
+    }
+    
+    #floatingNavMenu {
+        top: 70px !important;
+        right: 15px !important;
+        left: 15px !important;
+        min-width: auto !important;
+    }
+    
+    /* Sections */
+    section {
+        padding: 3rem 1rem !important;
+    }
+    
+    /* Formulaires */
+    .contact-form,
+    form {
+        padding: 1.5rem 1rem !important;
+    }
+    
+    .form-row {
+        flex-direction: column !important;
+    }
+    
+    input,
+    textarea,
+    select {
+        width: 100% !important;
+        font-size: 16px !important;
+    }
 }
 
 @media (max-width: 480px) {
     /* Espacements réduits sur petits mobiles */
     section {
-        padding: 3rem 0.5rem 2rem !important;
+        padding: 2.5rem 0.75rem !important;
     }
     
     .hero {
-        padding: 1.5rem 0.25rem !important;
+        padding: 2rem 0.75rem !important;
     }
     
     .hero-content {
-        padding: 0.5rem 0.25rem !important;
+        padding: 1rem 0.75rem !important;
+    }
+    
+    .container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
     }
     
     /* Titres encore plus petits */
-    h1 {
-        font-size: clamp(1.5rem, 6vw, 2.5rem) !important;
+    h1,
+    .hero-title {
+        font-size: clamp(1.75rem, 8vw, 2.5rem) !important;
     }
     
     h2 {
-        font-size: clamp(1.3rem, 5vw, 2rem) !important;
+        font-size: clamp(1.4rem, 6vw, 2rem) !important;
+    }
+    
+    h3 {
+        font-size: clamp(1.1rem, 5vw, 1.5rem) !important;
     }
     
     /* Textes */
     p,
     .text,
     [class*="text"] {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         line-height: 1.6;
     }
     
     /* Cards et spacing */
     .card,
-    [class*="card"] {
-        padding: 0.75rem;
+    [class*="card"],
+    .project-card {
+        padding: 1rem;
+        margin: 0.75rem 0;
     }
     
     /* Fix pour les stats */
     .hero-stats {
-        gap: 0.75rem !important;
-        padding: 0.5rem;
+        gap: 0.75rrem 0.5rem !important;
     }
     
-    .stat {
-        padding: 0.5rem !important;
+    .hero-content {
+        padding: 0.75rem 0.5rem !important;
+    }
+    
+    .container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    
+    h1,
+    .hero-title {
+        font-size: 1.5rem !important;
+    }
+    
+    h2 {
+        font-size: 1.25rem !important;
+    }
+    
+    h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    p {
+        font-size: 0.875rem;
+    }
+    
+    .card,
+    [class*="card"] {
+        padding: 0.75rem;
+        margin: 0.5rem 0;
+    }
+    
+    .btn {
+        padding: 0.625rem 1rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Grands écrans (Desktop) */
+@media (min-width: 1441px) {
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    section {
+        padding: 5rem 2rem;
+    }
+}
+
+/* Très grands écrans (4K et plus) */
+@media (min-width: 2560px) {
+    .container {
+        max-width: 2000px;
+    }
+    
+    h1 {
+        font-size: 4.5rem !important;
+    }
+    
+    h2 {
+        font-size: 3.5rem !important;
+    }
+    
+    p {
+        font-size: 1.25rem
+    
+    #floatingNavMenu {
+        padding: 1rem !important;
+    }
+    
+    .floating-nav-link {
+        padding: 0.75rem 1rem !important;
+        font-size: 0.9rem !important;
     }
 }
 

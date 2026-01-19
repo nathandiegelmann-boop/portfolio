@@ -1,0 +1,32 @@
+# Protection du dossier admin
+# Empêche l'accès direct aux fichiers sensibles
+
+# Bloquer l'accès aux fichiers SQL
+<FilesMatch "\.(sql)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Bloquer l'accès au dossier includes
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^includes/.*$ - [F,L]
+</IfModule>
+
+# Protection contre les injections
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+    RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+    RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# Désactiver l'affichage des répertoires
+Options -Indexes
+
+# Protection des fichiers sensibles
+<FilesMatch "(\.htaccess|\.htpasswd|\.ini|\.log|\.sh|\.inc|\.bak)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

@@ -2,6 +2,9 @@
 // Nathan Diegelmann - Portfolio One Page Complet
 require_once __DIR__ . '/includes/config.php';
 
+// Tracking des visiteurs
+require_once __DIR__ . '/includes/tracker.php';
+
 // Récupération TOUS les projets
 $projects_sql = "SELECT * FROM projects ORDER BY is_featured DESC, created_at DESC";
 $projects_stmt = $pdo->query($projects_sql);
@@ -59,6 +62,9 @@ $experiences = $experiences_stmt->fetchAll();
     <link rel="stylesheet" href="assets/css/style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="assets/css/one-page.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="assets/css/responsive-fixes.css?v=<?php echo time(); ?>">
+    
+    <!-- Auto-refresh (décommenter pour activer) -->
+    <!-- <script src="assets/js/auto-refresh.js" defer></script> -->
 </head>
 <body>
     <!-- Bouton de navigation flottant -->
@@ -76,6 +82,11 @@ $experiences = $experiences_stmt->fetchAll();
         <a href="#parcours" class="floating-nav-link" style="color: #E2E8F0; text-decoration: none; padding: 12px 16px; border-radius: 10px; transition: all 0.3s ease; font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: 0.3px; cursor: pointer; display: block; background: transparent; border-left: 3px solid transparent;">PARCOURS</a>
         <a href="#apropos" class="floating-nav-link" style="color: #E2E8F0; text-decoration: none; padding: 12px 16px; border-radius: 10px; transition: all 0.3s ease; font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: 0.3px; cursor: pointer; display: block; background: transparent; border-left: 3px solid transparent;">À PROPOS</a>
         <a href="#contact" class="floating-nav-link" style="color: #E2E8F0; text-decoration: none; padding: 12px 16px; border-radius: 10px; transition: all 0.3s ease; font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: 0.3px; cursor: pointer; display: block; background: transparent; border-left: 3px solid transparent;">CONTACT</a>
+        <div style="border-top: 1px solid rgba(51, 65, 85, 0.8); margin: 8px 0;"></div>
+        <a href="admin/login.php" class="floating-nav-link" style="color: #94A3B8; text-decoration: none; padding: 12px 16px; border-radius: 10px; transition: all 0.3s ease; font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: 0.3px; cursor: pointer; display: flex; align-items: center; gap: 8px; background: transparent; border-left: 3px solid transparent; font-size: 13px;">
+            <i class="fas fa-shield-halved" style="font-size: 14px;"></i>
+            <span>ADMINISTRATION</span>
+        </a>
     </div>
     
     <!-- Section Accueil / Hero -->
@@ -162,7 +173,11 @@ $experiences = $experiences_stmt->fetchAll();
                     </h3>
                     
                     <p class="project-desc">
-                        <?php echo htmlspecialchars($project['short_description']); ?>
+                        <?php 
+                        // Utiliser description et limiter à 150 caractères
+                        $desc = $project['description'] ?? '';
+                        echo htmlspecialchars(strlen($desc) > 150 ? substr($desc, 0, 150) . '...' : $desc); 
+                        ?>
                     </p>
                     
                     <div class="project-tech">
@@ -621,21 +636,30 @@ $experiences = $experiences_stmt->fetchAll();
         // Fermer le menu lors du clic sur un lien
         document.querySelectorAll('#floatingNavMenu a, .floating-nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
                 const href = this.getAttribute('href');
-                const target = document.querySelector(href);
                 
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop,
-                        behavior: 'smooth'
-                    });
+                // Si c'est un lien d'ancrage (commence par #), on fait le smooth scroll
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const target = document.querySelector(href);
+                    
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    floatingNavMenu.style.display = 'none';
+                    floatingNavBtn.style.transform = 'rotate(0deg)';
+                } else {
+                    // Pour les liens externes (comme admin/login.php), on laisse le comportement normal
+                    // On ferme juste le menu
+                    floatingNavMenu.style.display = 'none';
+                    floatingNavBtn.style.transform = 'rotate(0deg)';
                 }
-                
-                floatingNavMenu.style.display = 'none';
-                floatingNavBtn.style.transform = 'rotate(0deg)';
             });
             
             // Effet hover
@@ -667,6 +691,9 @@ $experiences = $experiences_stmt->fetchAll();
                         top: target.offsetTop,
                         behavior: 'smooth'
                     });
+                    // Fermer le menu après navigation
+                    floatingNavMenu.style.display = 'none';
+                    floatingNavBtn.style.transform = 'rotate(0deg)';
                 }
             });
         });
@@ -832,6 +859,14 @@ $experiences = $experiences_stmt->fetchAll();
                     clearInterval(titleInterval);
                 }
                 document.title = originalTitle;
+            }
+        });
+        
+        // Détecter quand l'utilisateur quitte la page
+        window.addEventListener('beforeunload', function() {
+            // Envoyer une requête pour terminer la session
+            if (navigator.sendBeacon) {
+                navigator.sendBeacon('<?php echo SITE_URL; ?>/includes/end_session.php');
             }
         });
         
